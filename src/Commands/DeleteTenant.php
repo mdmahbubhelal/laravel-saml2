@@ -26,7 +26,7 @@ class DeleteTenant extends \Illuminate\Console\Command
      *
      * @var string
      */
-    protected $description = 'Delete a tenant by ID, name or UUID';
+    protected $description = 'Delete a tenant by ID, name or key';
 
     /**
      * @var TenantRepository

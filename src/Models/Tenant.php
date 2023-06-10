@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Tenant
  *
  * @property int $id
- * @property string $uuid
+ * @property string $key
  * @property string $name
  * @property string $idp_entity_id
  * @property string $idp_login_url
@@ -41,7 +41,7 @@ class Tenant extends Model
      * @var array
      */
     protected $fillable = [
-        'uuid',
+        'key',
         'name',
         'idp_entity_id',
         'idp_login_url',

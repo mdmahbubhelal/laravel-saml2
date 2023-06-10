@@ -112,9 +112,9 @@ class OneLoginBuilder
     protected function configDefaultValues()
     {
         return [
-            'sp.entityId' => URL::route('saml.metadata', ['uuid' => $this->tenant->uuid]),
-            'sp.assertionConsumerService.url' => URL::route('saml.acs', ['uuid' => $this->tenant->uuid]),
-            'sp.singleLogoutService.url' => URL::route('saml.sls', ['uuid' => $this->tenant->uuid])
+            'sp.entityId' => URL::route('saml.metadata', ['key' => $this->tenant->key]),
+            'sp.assertionConsumerService.url' => URL::route('saml.acs', ['key' => $this->tenant->key]),
+            'sp.singleLogoutService.url' => URL::route('saml.sls', ['key' => $this->tenant->key])
         ];
     }
 

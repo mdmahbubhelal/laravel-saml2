@@ -22,6 +22,7 @@ class CreateTenant extends \Illuminate\Console\Command
      */
     protected $signature = 'saml2:create-tenant
                             { --n|name= : A tenant custom name }
+                            { --k|key= : A tenant custom key }
                             { --entityId= : IdP Issuer URL }
                             { --loginUrl= : IdP Sign on URL }
                             { --logoutUrl= : IdP Logout URL }
@@ -94,10 +95,22 @@ class CreateTenant extends \Illuminate\Console\Command
             return;
         }
 
+        $key = $this->option('key');
+
+        if($key && ($tenant = $this->tenants->findByKey($key))) {
+            $this->renderTenants($tenant, 'Already found tenant(s) using this key');
+            $this->error(
+                'Cannot create a tenant because the key is already being associated with other tenants.'
+                    . PHP_EOL . 'Firstly, delete tenant(s) or try to create with another with another key.'
+            );
+
+            return;
+        }
+
         $class = config('saml2.tenantModel', Tenant::class);
         $tenant = new $class([
             'name' => $name,
-            'uuid' => \Ramsey\Uuid\Uuid::uuid4(),
+            'key' => $key,
             'idp_entity_id' => $entityId,
             'idp_login_url' => $loginUrl,
             'idp_logout_url' => $logoutUrl,
@@ -112,7 +125,7 @@ class CreateTenant extends \Illuminate\Console\Command
             return;
         }
 
-        $this->info("The tenant #{$tenant->id} ({$tenant->uuid}) was successfully created.");
+        $this->info("The tenant #{$tenant->id} ({$tenant->key}) was successfully created.");
 
         $this->renderTenantCredentials($tenant);
 

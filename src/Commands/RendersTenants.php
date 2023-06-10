@@ -58,7 +58,7 @@ trait RendersTenants
     {
         return [
             'ID' => $tenant->id,
-            'UUID' => $tenant->uuid,
+            'key' => $tenant->key,
             'Name' => $tenant->name,
             'Entity ID' => $tenant->idp_entity_id,
             'Login URL' => $tenant->idp_login_url,
@@ -85,10 +85,10 @@ trait RendersTenants
         $this->output->section('Credentials for the tenant');
 
         $this->getOutput()->text([
-            'Identifier (Entity ID): <comment>' . route('saml.metadata', ['uuid' => $tenant->uuid]) . '</comment>',
-            'Reply URL (Assertion Consumer Service URL): <comment>' . route('saml.acs', ['uuid' => $tenant->uuid]) . '</comment>',
-            'Sign on URL: <comment>' . route('saml.login', ['uuid' => $tenant->uuid]) . '</comment>',
-            'Logout URL: <comment>' . route('saml.logout', ['uuid' => $tenant->uuid]) . '</comment>',
+            'Identifier (Entity ID): <comment>' . route('saml.metadata', ['key' => $tenant->key]) . '</comment>',
+            'Reply URL (Assertion Consumer Service URL): <comment>' . route('saml.acs', ['key' => $tenant->key]) . '</comment>',
+            'Sign on URL: <comment>' . route('saml.login', ['key' => $tenant->key]) . '</comment>',
+            'Logout URL: <comment>' . route('saml.logout', ['key' => $tenant->key]) . '</comment>',
             'Relay State: <comment>' . ($tenant->relay_state_url ?: config('saml2.loginRoute')) . ' (optional)</comment>'
         ]);
     }

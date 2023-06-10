@@ -45,7 +45,7 @@ class TenantRepository
     /**
      * Find a tenant by any identifier.
      *
-     * @param int|string $key ID, name or UUID
+     * @param int|string $key ID, name or key
      * @param bool $withTrashed Whether need to include safely deleted records.
      *
      * @return Tenant[]|\Illuminate\Database\Eloquent\Collection
@@ -59,7 +59,7 @@ class TenantRepository
         }
 
         return $query->where('name', $key)
-            ->orWhere('uuid', $key)
+            ->orWhere('key', $key)
             ->get();
     }
 
@@ -94,17 +94,17 @@ class TenantRepository
     }
 
     /**
-     * Find a tenant by UUID.
+     * Find a tenant by key.
      *
-     * @param int $uuid
+     * @param int $key
      * @param bool $withTrashed
      *
      * @return Tenant|\Illuminate\Database\Eloquent\Model|null
      */
-    public function findByUUID(string $uuid, bool $withTrashed = true)
+    public function findByKey(string $key, bool $withTrashed = true)
     {
         return $this->query($withTrashed)
-            ->where('uuid', $uuid)
+            ->where('key', $key)
             ->first();
     }
 }

@@ -22,11 +22,11 @@ return [
     |
     | Method | URI                             | Name
     | -------|---------------------------------|------------------
-    | POST   | {routesPrefix}/{uuid}/acs       | saml.acs
-    | GET    | {routesPrefix}/{uuid}/login     | saml.login
-    | GET    | {routesPrefix}/{uuid}/logout    | saml.logout
-    | GET    | {routesPrefix}/{uuid}/metadata  | saml.metadata
-    | GET    | {routesPrefix}/{uuid}/sls       | saml.sls
+    | POST   | {routesPrefix}/{key}/acs       | saml.acs
+    | GET    | {routesPrefix}/{key}/login     | saml.login
+    | GET    | {routesPrefix}/{key}/logout    | saml.logout
+    | GET    | {routesPrefix}/{key}/metadata  | saml.metadata
+    | GET    | {routesPrefix}/{key}/sls       | saml.sls
     |
     */
 

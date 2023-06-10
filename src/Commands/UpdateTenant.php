@@ -81,7 +81,7 @@ class UpdateTenant extends \Illuminate\Console\Command
             return;
         }
 
-        $this->info("The tenant #{$tenant->id} ({$tenant->uuid}) was successfully updated.");
+        $this->info("The tenant #{$tenant->id} ({$tenant->key}) was successfully updated.");
 
         $this->renderTenantCredentials($tenant);
 
