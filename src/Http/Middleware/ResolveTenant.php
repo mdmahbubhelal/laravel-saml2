@@ -56,7 +56,7 @@ class ResolveTenant
             Log::debug('[Saml2] Tenant resolved', [
                 'uuid' => $tenant->uuid,
                 'id' => $tenant->id,
-                'key' => $tenant->key
+                'name' => $tenant->name
             ]);
         }
 

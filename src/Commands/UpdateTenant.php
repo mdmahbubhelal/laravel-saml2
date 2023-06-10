@@ -20,7 +20,7 @@ class UpdateTenant extends \Illuminate\Console\Command
      * @var string
      */
     protected $signature = 'saml2:update-tenant {id}
-                            { --k|key= : A tenant custom key }
+                            { --n|name= : A tenant custom name }
                             { --entityId= : IdP Issuer URL }
                             { --loginUrl= : IdP Sign on URL }
                             { --logoutUrl= : IdP Logout URL }
@@ -66,7 +66,7 @@ class UpdateTenant extends \Illuminate\Console\Command
         }
 
         $tenant->update(array_filter([
-            'key' => $this->option('key'),
+            'name' => $this->option('name'),
             'idp_entity_id' => $this->option('entityId'),
             'idp_login_url' => $this->option('loginUrl'),
             'idp_logout_url' => $this->option('logoutUrl'),

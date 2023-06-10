@@ -16,7 +16,7 @@ class CreateSaml2TenantsTable extends Migration
         Schema::create('saml2_tenants', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('key')->nullable();
+            $table->string('name')->unique();
             $table->string('idp_entity_id');
             $table->string('idp_login_url');
             $table->string('idp_logout_url');

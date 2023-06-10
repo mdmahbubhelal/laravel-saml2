@@ -59,7 +59,7 @@ trait RendersTenants
         return [
             'ID' => $tenant->id,
             'UUID' => $tenant->uuid,
-            'Key' => $tenant->key,
+            'Name' => $tenant->name,
             'Entity ID' => $tenant->idp_entity_id,
             'Login URL' => $tenant->idp_login_url,
             'Logout URL' => $tenant->idp_logout_url,
